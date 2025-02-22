@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/password_provider.dart';
-import '../widgets/password_list_item.dart';
 import 'add_password_screen.dart';
+import '../models/password_entry.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -29,39 +29,63 @@ class HomeScreen extends StatelessWidget {
             );
           }
 
-          if (passwordProvider.passwords.isEmpty) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.lock_outline, size: 64, color: Colors.grey),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'No hay contraseñas guardadas',
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AddPasswordScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text('Agregar Contraseña'),
-                  ),
-                ],
-              ),
-            );
-          }
+          return FutureBuilder<List<PasswordEntry>>(
+            future: passwordProvider.loadPasswords(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
 
-          return ListView.builder(
-            itemCount: passwordProvider.passwords.length,
-            itemBuilder: (context, index) {
-              final password = passwordProvider.passwords[index];
-              return PasswordListItem(password: password);
+              if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              }
+
+              final passwords = snapshot.data ?? [];
+
+              if (passwords.isEmpty) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.lock_outline, size: 64, color: Colors.grey),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'No hay contraseñas guardadas',
+                        style: TextStyle(fontSize: 18, color: Colors.grey),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AddPasswordScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text('Agregar Contraseña'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+
+              return ListView.builder(
+                itemCount: passwords.length,
+                itemBuilder: (context, index) {
+                  final password = passwords[index];
+                  return ListTile(
+                    title: Text(password.title),
+                    subtitle: Text(password.username),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        passwordProvider.deletePassword(password.id);
+                      },
+                    ),
+                  );
+                },
+              );
             },
           );
         },

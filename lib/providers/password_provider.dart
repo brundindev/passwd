@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
 import '../models/password_entry.dart';
 import '../services/encryption_service.dart';
-import 'package:msgpack_dart/msgpack_dart.dart' show serialize, deserialize;
-import 'package:path_provider/path_provider.dart';
-import 'dart:io';
+import 'package:firebase_database/firebase_database.dart';
+import 'dart:convert';
 
 class PasswordProvider extends ChangeNotifier {
   final List<PasswordEntry> _passwords = [];
@@ -20,19 +19,29 @@ class PasswordProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<List<PasswordEntry>> loadPasswords() async {
+    await _loadPasswords();
+    return List.unmodifiable(_passwords);
+  }
+
   Future<void> _loadPasswords() async {
     try {
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/passwords.db');
-      
-      if (await file.exists()) {
-        final encrypted = await file.readAsBytes();
-        final decrypted = await _encryptionService.decrypt(encrypted);
-        final data = deserialize(Uint8List.fromList(decrypted)) as List;
-        
+      final DatabaseReference dbRef = FirebaseDatabase.instance.ref('passwords');
+      final snapshot = await dbRef.once();
+      final data = snapshot.snapshot.value as Map<dynamic, dynamic>?;
+
+      if (data != null) {
         _passwords.clear();
-        for (var item in data) {
-          _passwords.add(PasswordEntry.fromMap(Map<String, dynamic>.from(item)));
+        for (var entry in data.entries) {
+          final passwordData = entry.value;
+          _passwords.add(PasswordEntry(
+            id: entry.key,
+            title: passwordData['title'],
+            username: passwordData['username'],
+            password: utf8.decode(await _encryptionService.decrypt(passwordData['password'])),
+            createdAt: DateTime.now(),
+            modifiedAt: DateTime.now(),
+          ));
         }
       }
     } catch (e) {
@@ -40,24 +49,19 @@ class PasswordProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> _savePasswords() async {
-    try {
-      final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}/passwords.db');
-      
-      final data = _passwords.map((p) => p.toMap()).toList();
-      final packed = serialize(data);
-      final encrypted = await _encryptionService.encrypt(packed);
-      
-      await file.writeAsBytes(encrypted);
-    } catch (e) {
-      debugPrint('Error saving passwords: $e');
-    }
-  }
-
   Future<void> addPassword(PasswordEntry password) async {
+    final passwordMap = password.toMap();
+    final jsonString = jsonEncode(passwordMap);
+    final bytes = utf8.encode(jsonString);
+
+    final encryptedPassword = await _encryptionService.encrypt(bytes);
+    final DatabaseReference dbRef = FirebaseDatabase.instance.ref('passwords');
+    await dbRef.push().set({
+      'title': password.title,
+      'username': password.username,
+      'password': encryptedPassword,
+    });
     _passwords.add(password);
-    await _savePasswords();
     notifyListeners();
   }
 
@@ -65,14 +69,15 @@ class PasswordProvider extends ChangeNotifier {
     final index = _passwords.indexWhere((p) => p.id == id);
     if (index != -1) {
       _passwords[index] = newPassword;
-      await _savePasswords();
+      await addPassword(newPassword); // Guardar en Firebase
       notifyListeners();
     }
   }
 
   Future<void> deletePassword(String id) async {
+    final DatabaseReference dbRef = FirebaseDatabase.instance.ref('passwords');
+    await dbRef.child(id).remove();
     _passwords.removeWhere((p) => p.id == id);
-    await _savePasswords();
     notifyListeners();
   }
 }

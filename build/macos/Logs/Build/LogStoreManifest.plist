@@ -6,7 +6,7 @@
 	<integer>11</integer>
 	<key>logs</key>
 	<dict>
-		<key>3FC3EC56-38D3-416F-BD1C-51D8D9014FB3</key>
+		<key>5A706C36-7659-4589-ABA8-88F64A1E724B</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>3FC3EC56-38D3-416F-BD1C-51D8D9014FB3.xcactivitylog</string>
+			<string>5A706C36-7659-4589-ABA8-88F64A1E724B.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -29,7 +29,7 @@
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
-				<integer>1</integer>
+				<integer>18</integer>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>Runner project</string>
@@ -40,15 +40,15 @@
 			<key>signature</key>
 			<string>Building workspace Runner with scheme Runner and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>761918458.28613901</real>
+			<real>761938401.59419405</real>
 			<key>timeStoppedRecording</key>
-			<real>761918489.39149201</real>
+			<real>761938421.055457</real>
 			<key>title</key>
 			<string>Building workspace Runner with scheme Runner and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>3FC3EC56-38D3-416F-BD1C-51D8D9014FB3</string>
+			<string>5A706C36-7659-4589-ABA8-88F64A1E724B</string>
 		</dict>
-		<key>C539EFC9-A296-4210-A027-8FE2D4BDA74A</key>
+		<key>EF7AADC5-6BE4-4A81-B1D7-CB911ADCC1A7</key>
 		<dict>
 			<key>className</key>
 			<string>IDECommandLineBuildLog</string>
@@ -57,13 +57,13 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>C539EFC9-A296-4210-A027-8FE2D4BDA74A.xcactivitylog</string>
+			<string>EF7AADC5-6BE4-4A81-B1D7-CB911ADCC1A7.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>W</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
@@ -71,7 +71,7 @@
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
+				<integer>18</integer>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>Runner project</string>
@@ -82,13 +82,13 @@
 			<key>signature</key>
 			<string>Building workspace Runner with scheme Runner and configuration Debug</string>
 			<key>timeStartedRecording</key>
-			<real>761918632.08458197</real>
+			<real>761938256.83279502</real>
 			<key>timeStoppedRecording</key>
-			<real>761918641.84419596</real>
+			<real>761938276.85136998</real>
 			<key>title</key>
 			<string>Building workspace Runner with scheme Runner and configuration Debug</string>
 			<key>uniqueIdentifier</key>
-			<string>C539EFC9-A296-4210-A027-8FE2D4BDA74A</string>
+			<string>EF7AADC5-6BE4-4A81-B1D7-CB911ADCC1A7</string>
 		</dict>
 	</dict>
 </dict>

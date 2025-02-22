@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/password_provider.dart';
+import 'screens/welcome_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
           textTheme: GoogleFonts.interTextTheme(
-            Theme.of(context).textTheme,
+            Theme.of(context).textTheme.apply(bodyColor: Colors.white, displayColor: Colors.white),
           ),
         ),
         darkTheme: ThemeData(
@@ -41,10 +42,10 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
           textTheme: GoogleFonts.interTextTheme(
-            Theme.of(context).textTheme,
+            Theme.of(context).textTheme.apply(bodyColor: Colors.white, displayColor: Colors.white),
           ),
         ),
-        home: const LoginScreen(),
+        home: const WelcomeScreen(),
         routes: {
           '/home': (context) => const HomeScreen(),
           '/settings': (context) => const SettingsScreen(),
