@@ -2,7 +2,7 @@
   <br>
   <a href="#"><img src="https://img.freepik.com/vector-premium/icono-candado-seguro_582637-274.jpg" alt="Gestor de Contraseñas" width="200"></a>
   <br>
-  🔐 Gestor de Contraseñas Seguro
+  🔐 Gestor de Contraseñas - PASSWD.
   <br>
 </h1>
 
