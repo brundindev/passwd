@@ -1,4 +1,4 @@
-# passwd
+# gestor_password
 
 A new Flutter project.
 

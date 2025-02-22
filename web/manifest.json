@@ -1,6 +1,6 @@
 {
-    "name": "passwd",
-    "short_name": "passwd",
+    "name": "gestor_password",
+    "short_name": "gestor_password",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
