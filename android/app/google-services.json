@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "252776703139",
+    "project_id": "passwd-brundindev",
+    "storage_bucket": "passwd-brundindev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252776703139:android:7613a171dd9674d6564b16",
+        "android_client_info": {
+          "package_name": "com.example.gestor_password"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCehziaHQgcKHv6jSwPLe74ThZvdswzVtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
