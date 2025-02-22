@@ -1,16 +1,72 @@
-# gestor_password
+<h1 align="center">
+  <br>
+  <a href="#"><img src="https://img.freepik.com/vector-premium/icono-candado-seguro_582637-274.jpg" alt="Gestor de Contraseñas" width="200"></a>
+  <br>
+  🔐 Gestor de Contraseñas Seguro
+  <br>
+</h1>
 
-A new Flutter project.
+<h5 align="center">by Alejandro Alberto Jiménez Brundin </h5>
 
-## Getting Started
+<h4 align="center">Una aplicación multiplataforma para almacenar, cifrar y gestionar contraseñas de manera segura, construida con <a href="https://flutter.dev/" target="_blank">Flutter</a> y <a href="https://firebase.google.com/" target="_blank">Firebase</a>.</h4>
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <a href="#"><img src="https://img.shields.io/github/v/release/brundindev/gestor-passwords" alt="Versión"></a>
+  <a href="#"><img src="https://img.shields.io/badge/security-high-green.svg" alt="Seguridad Alta"></a>
+  <a href="#"><img src="https://img.shields.io/badge/flutter-3.x-blue.svg" alt="Flutter"></a>
+  <a href="#"><img src="https://img.shields.io/badge/donate-%24-ff69b4.svg" alt="Donar"></a>
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+<p align="center">
+  <a href="#key-features">⭐ Características</a> •
+  <a href="#how-to-use">🚀 Cómo usar</a> •
+  <a href="#download">📥 Descargar</a> •
+  <a href="#credits">👨‍💻 Créditos</a> •
+  <a href="#license">📜 Licencia</a>
+</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<p align="center">
+  <img src="https://via.placeholder.com/800x400" alt="Screenshot de la App">
+</p>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## ⭐ Características Principales
+
+✅ **Cifrado de alto nivel** 🔑  
+Tus contraseñas son encriptadas con **AES-256**, garantizando máxima seguridad.  
+
+✅ **Autenticación con Biometría** 👆  
+Accede con **huella dactilar o reconocimiento facial** en dispositivos compatibles.  
+
+✅ **Gestor de contraseñas inteligente** 📂  
+Guarda, edita y organiza tus contraseñas en un solo lugar.  
+
+✅ **Sincronización con Firebase** ☁️  
+Tus datos se almacenan en **Firebase Firestore**, permitiendo acceso desde múltiples dispositivos.  
+
+✅ **Generador de contraseñas seguras** 🔄  
+Crea contraseñas aleatorias fuertes con solo un clic.  
+
+✅ **Modo oscuro/claro** 🌙☀️  
+Personaliza la interfaz a tu gusto.  
+
+✅ **Acceso sin conexión** 📴  
+Consulta tus contraseñas sin necesidad de internet.  
+
+✅ **Multiplataforma** 🖥️📱  
+Disponible en **Android, iOS, Windows, macOS y Linux**.  
+
+---
+
+## 🚀 Cómo Usar
+
+Para clonar y ejecutar esta aplicación, necesitas tener [Flutter](https://flutter.dev/) y [Firebase CLI](https://firebase.google.com/docs/cli) instalados en tu equipo.
+
+### **1️⃣ Clonar el Repositorio**
+```bash
+git clone https://github.com/brundindev/gestor-passwords.git
+cd gestor-passwords
+```
+
+### ** **
